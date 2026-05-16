@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "The Future of Generative AI in Production",
+    "speakers": ["Dr. Sarah Chen", "Marcus Thorne"],
+    "categories": ["AI", "Machine Learning", "MLOps"],
+    "description": "An in-depth look at scaling LLMs for enterprise applications, focusing on latency, cost optimization, and RAG architectures."
+  },
+  {
+    "id": 2,
+    "title": "WebAssembly: Beyond the Browser",
+    "speakers": ["Alex Rivest"],
+    "categories": ["Wasm", "Edge", "Cloud Native"],
+    "description": "Exploring how WebAssembly is revolutionizing serverless computing and edge orchestration with near-native performance."
+  },
+  {
+    "id": 3,
+    "title": "Hardening the Software Supply Chain",
+    "speakers": ["Elena Rodriguez"],
+    "categories": ["Security", "DevSecOps"],
+    "description": "Practical strategies for implementing SLSA, SBOMs, and automated vulnerability scanning in modern CI/CD pipelines."
+  },
+  {
+    "id": 4,
+    "title": "Architecting for Global Scale",
+    "speakers": ["James Wilson", "Priya Nair"],
+    "categories": ["Distributed Systems", "Cloud"],
+    "description": "Lessons learned from building multi-region, active-active architectures that handle millions of requests per second."
+  },
+  {
+    "id": 5,
+    "title": "The Next Decade of Frontend Performance",
+    "speakers": ["Liam O'Connor"],
+    "categories": ["Web", "Performance", "UX"],
+    "description": "Deep dive into partial hydration, server components, and how to achieve perfect Lighthouse scores in complex SPAs."
+  },
+  {
+    "id": 6,
+    "title": "Designing Resilient Microservices",
+    "speakers": ["Sasha Volkov"],
+    "categories": ["Microservices", "Reliability"],
+    "description": "Best practices for circuit breaking, bulkhead patterns, and observability in highly decoupled service ecosystems."
+  }
+]

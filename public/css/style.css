@@ -1,0 +1,227 @@
+:root {
+    --primary-color: #00f2ff;
+    --secondary-color: #7000ff;
+    --bg-dark: #050505;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-main: #ffffff;
+    --text-dim: #b0b0b0;
+    --accent-glow: rgba(0, 242, 255, 0.3);
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    padding: 80px 0 40px;
+    text-align: center;
+    background: radial-gradient(circle at top center, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo span {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 8px;
+    margin-top: -5px;
+    -webkit-text-fill-color: var(--text-main);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.event-meta {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+/* Search Section */
+.search-section {
+    margin: 40px 0;
+}
+
+.search-bar {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 18px 25px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: white;
+    font-size: 1rem;
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-speed);
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.search-icon {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+}
+
+/* Schedule List */
+.schedule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 80px;
+}
+
+.talk-card, .break-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(5px);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 30px;
+    transition: transform var(--transition-speed), border-color var(--transition-speed);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.talk-card:hover {
+    border-color: rgba(0, 242, 255, 0.3);
+    transform: translateX(5px);
+}
+
+.time-slot {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.talk-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.speakers {
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.description {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 4px 12px;
+    background: rgba(112, 0, 255, 0.2);
+    border: 1px solid rgba(112, 0, 255, 0.3);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #d8b4fe;
+    text-transform: uppercase;
+}
+
+/* Break Card */
+.break-card {
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.02),
+        rgba(255, 255, 255, 0.02) 10px,
+        rgba(255, 255, 255, 0.05) 10px,
+        rgba(255, 255, 255, 0.05) 20px
+    );
+    opacity: 0.8;
+}
+
+.break-card h3 {
+    color: var(--text-dim);
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .talk-card, .break-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .time-slot {
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+    }
+}

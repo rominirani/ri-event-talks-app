@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloWorld Tech Conference | 1-Day Event Schedule</title>
+    <meta name="description" content="Join us for HelloWorld Tech Conference, a premier 1-day event filled with deep dives into AI, Cloud, Wasm, and more.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1 class="logo" id="event-title">HelloWorld <span>Tech Conference</span></h1>
+            <p class="subtitle">1 Day. 6 Talks. Infinite Possibilities.</p>
+            <div class="event-meta">
+                <span><i class="icon-calendar"></i> May 25, 2026</span>
+                <span><i class="icon-clock"></i> 10:00 AM - 05:40 PM</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="search-section">
+            <div class="search-bar">
+                <input type="text" id="category-search" placeholder="Search talks by category (e.g. AI, Cloud, Web)..." autocomplete="off">
+                <span class="search-icon">🔍</span>
+            </div>
+        </section>
+
+        <section class="schedule-container" id="schedule-list">
+            <!-- Talks will be injected here by main.js -->
+            <div class="loading">Loading schedule...</div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 HelloWorld Tech Conference. Built with Node.js & Premium Design.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
