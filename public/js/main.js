@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const scheduleList = document.getElementById('schedule-list');
     const searchInput = document.getElementById('category-search');
+    const modal = document.getElementById('talk-modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeModal = document.querySelector('.close-modal');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    
     let allTalks = [];
 
     // Schedule Settings
@@ -34,12 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scheduleList.innerHTML = '';
         
         let currentMinutes = START_TIME;
-        let talkCount = 0;
 
-        // Note: The prompt says 6 talks total.
-        // We render all 6, but filter them based on search.
-        // Even if some are filtered, the schedule positions are fixed for the 6 slots.
-        
         for (let i = 0; i < 6; i++) {
             const talk = talks.find(t => t.id === i + 1);
             
@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const matches = talk.categories.some(cat => cat.toLowerCase().includes(searchTerm));
                 
                 if (searchTerm === '' || matches) {
+                    card.addEventListener('click', () => openModal(talk, startTime, endTime));
                     scheduleList.appendChild(card);
                 }
             }
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="talk-info">
                 <h3>${talk.title}</h3>
                 <span class="speakers">by ${talk.speakers.join(' & ')}</span>
-                <p class="description">${talk.description}</p>
+                <p class="description">${talk.description.substring(0, 100)}...</p>
                 <div class="categories">
                     ${talk.categories.map(cat => `<span class="tag">${cat}</span>`).join('')}
                 </div>
@@ -106,9 +107,38 @@ document.addEventListener('DOMContentLoaded', () => {
         return div;
     }
 
+    function openModal(talk, start, end) {
+        modalBody.innerHTML = `
+            <div class="modal-time">${formatTime(start)} — ${formatTime(end)}</div>
+            <h2>${talk.title}</h2>
+            <span class="modal-speakers">Presented by ${talk.speakers.join(' & ')}</span>
+            <div class="modal-description">${talk.description}</div>
+            <div class="categories">
+                ${talk.categories.map(cat => `<span class="tag">${cat}</span>`).join('')}
+            </div>
+        `;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    }
+
+    function closeTalkModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
     // Event Listeners
     searchInput.addEventListener('input', () => {
         renderSchedule(allTalks);
+    });
+
+    closeModal.addEventListener('click', closeTalkModal);
+    modalOverlay.addEventListener('click', closeTalkModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeTalkModal();
+        }
     });
 
     // Initial Fetch
