@@ -6,7 +6,8 @@ A modern, premium 1-day event website built with **Node.js**, **Vanilla JavaScri
 
 - **Dynamic Schedule**: 6 talks (1 hour each) starting from 10:00 AM.
 - **Automated Timings**: Includes 10-minute transitions between talks and a 1-hour lunch break.
-- **Real-time Filter**: Instant search functionality to filter talks by category keywords.
+- **Dual-Criteria Search**: Instant search functionality to filter talks by **Category** or **Speaker**.
+- **Interactive Talk View**: Modal-based detailed view for every talk.
 - **Premium Design**: 
   - Sleek dark theme with deep purples and blues.
   - Glassmorphism effects and modern typography (Orbitron & Inter).

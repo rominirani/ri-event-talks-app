@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const scheduleList = document.getElementById('schedule-list');
-    const searchInput = document.getElementById('category-search');
+    const searchCategory = document.getElementById('search-category');
+    const searchSpeaker = document.getElementById('search-speaker');
     const modal = document.getElementById('talk-modal');
     const modalBody = document.getElementById('modal-body');
     const closeModal = document.querySelector('.close-modal');
@@ -55,11 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (talk) {
                 const card = createTalkCard(talk, startTime, endTime);
-                // Real-time filtering logic
-                const searchTerm = searchInput.value.toLowerCase();
-                const matches = talk.categories.some(cat => cat.toLowerCase().includes(searchTerm));
                 
-                if (searchTerm === '' || matches) {
+                // Multi-criteria filtering
+                const catTerm = searchCategory.value.toLowerCase();
+                const speakerTerm = searchSpeaker.value.toLowerCase();
+                
+                const matchesCategory = catTerm === '' || talk.categories.some(cat => cat.toLowerCase().includes(catTerm));
+                const matchesSpeaker = speakerTerm === '' || talk.speakers.some(speaker => speaker.toLowerCase().includes(speakerTerm));
+                
+                if (matchesCategory && matchesSpeaker) {
                     card.addEventListener('click', () => openModal(talk, startTime, endTime));
                     scheduleList.appendChild(card);
                 }
@@ -69,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (scheduleList.children.length === 0) {
-            scheduleList.innerHTML = '<div class="no-results">No talks found matching that category.</div>';
+            scheduleList.innerHTML = '<div class="no-results">No talks found matching your search criteria.</div>';
         }
     }
 
@@ -118,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        document.body.style.overflow = 'hidden';
     }
 
     function closeTalkModal() {
@@ -127,20 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event Listeners
-    searchInput.addEventListener('input', () => {
-        renderSchedule(allTalks);
-    });
+    searchCategory.addEventListener('input', () => renderSchedule(allTalks));
+    searchSpeaker.addEventListener('input', () => renderSchedule(allTalks));
 
     closeModal.addEventListener('click', closeTalkModal);
     modalOverlay.addEventListener('click', closeTalkModal);
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeTalkModal();
         }
     });
 
-    // Initial Fetch
     fetchTalks();
 });
