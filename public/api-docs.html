@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloWorld API | Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --accent: #00f2ff;
+            --secondary: #7000ff;
+            --text: #e0e0e0;
+            --text-dim: #909090;
+            --code-bg: #121214;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+        .api-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+        .method-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #10b981;
+            color: white;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+        .endpoint {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.2rem;
+            color: var(--accent);
+            vertical-align: middle;
+        }
+        .route-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+        .property { color: #818cf8; }
+        .string { color: #34d399; }
+        .number { color: #fbbf24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HelloWorld API Docs</h1>
+            <p class="subtitle">RESTful API documentation for the HelloWorld Tech Conference.</p>
+        </header>
+
+        <section class="api-card">
+            <div class="route-header">
+                <span class="method-tag">GET</span>
+                <span class="endpoint">/api/talks</span>
+            </div>
+            
+            <p>Fetches the complete schedule of talks for the event. This endpoint reads data dynamically from the server's local storage.</p>
+
+            <div class="section-title">Request Example</div>
+            <pre>
+fetch(<span class="string">'/api/talks'</span>)
+  .then(response => response.json())
+  .then(data => console.log(data));</pre>
+
+            <div class="section-title">Response Structure (200 OK)</div>
+            <pre>
+[
+  {
+    <span class="property">"id"</span>: <span class="number">1</span>,
+    <span class="property">"title"</span>: <span class="string">"The Future of Generative AI..."</span>,
+    <span class="property">"speakers"</span>: [<span class="string">"Dr. Sarah Chen"</span>, <span class="string">"Marcus Thorne"</span>],
+    <span class="property">"categories"</span>: [<span class="string">"AI"</span>, <span class="string">"Machine Learning"</span>],
+    <span class="property">"description"</span>: <span class="string">"An in-depth look at LLMs..."</span>
+  },
+  <span class="text-dim">...</span>
+]</pre>
+        </section>
+
+        <section class="api-card">
+            <div class="route-header">
+                <span class="method-tag" style="background: #3b82f6;">GET</span>
+                <span class="endpoint">/ (Static)</span>
+            </div>
+            <p>Serves the primary web application interface. All files in the <code>/public</code> directory are served as static assets.</p>
+        </section>
+    </div>
+</body>
+</html>
